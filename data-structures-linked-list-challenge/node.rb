@@ -1,5 +1,7 @@
 class Node
-  attr_reader :element, :nextNode
+  attr_reader :nextNode
+  attr_accessor :element
+  
   def initialize(element)
     @element = element
     @nextNode = nil

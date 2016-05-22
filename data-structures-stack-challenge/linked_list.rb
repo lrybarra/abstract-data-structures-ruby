@@ -6,17 +6,17 @@ class LinkedList
   end
 
   def insert_first(element)
-    p "Inserting First!!"
+    #p "Inserting First!!"
     tempNode = @firstNode
     @firstNode = Node.new(element)
     unless @firstNode == nil
       @firstNode.insert_after(tempNode)
     end
-    p "First Node has " + @firstNode.element.to_s
+    #p "First Node has " + @firstNode.element.to_s
   end
 
   def remove_first
-    p "Removing First!!"
+    #p "Removing First!!"
     node = @firstNode
 
     return node if node == nil
@@ -90,12 +90,12 @@ class LinkedList
 
 end
 
-myLinkedList = LinkedList.new
-p "size is currently " + myLinkedList.size.to_s
-p myLinkedList.remove_first
-myLinkedList.insert_first("Uber")
-myLinkedList.insert_first("Skrr")
-p myLinkedList.get(0)
-p myLinkedList.get(1)
-p myLinkedList.get(2)
-p "size is currently " + myLinkedList.size.to_s
+# myLinkedList = LinkedList.new
+# p "size is currently " + myLinkedList.size.to_s
+# p myLinkedList.remove_first
+# myLinkedList.insert_first("Uber")
+# myLinkedList.insert_first("Skrr")
+# p myLinkedList.get(0)
+# p myLinkedList.get(1)
+# p myLinkedList.get(2)
+# p "size is currently " + myLinkedList.size.to_s

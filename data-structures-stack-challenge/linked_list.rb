@@ -22,11 +22,10 @@ class LinkedList
     return node if node == nil
 
     if node.nextNode == nil
-      p "first node now nil"
       @firstNode = nil
     else
-      @firstNode = @firstNode.nextNode
       node.remove_after
+      @firstNode = @firstNode.nextNode
     end
     return node
   end
@@ -65,8 +64,6 @@ class LinkedList
   end
 
   def get(index)
-    raise 'OutOfBoundsException' if index > (self.size - 1)
-
     count = 0
     currentNode = @firstNode
 
@@ -91,55 +88,14 @@ class LinkedList
     return count
   end
 
-  def insert(index, element)
-    return nil if index > size
-
-    count = 0
-
-    currentNode = @firstNode
-
-    until count == index
-      count += 1
-      previousNode = currentNode
-      currentNode = currentNode.nextNode
-    end
-
-    node = Node.new(element)
-    previousNode.insert_after(node)
-    node.insert_after(currentNode)
-    return element
-
-  end
-
-  def set(index, element)
-    return nil if index >= size
-
-    count = 0
-
-    currentNode = @firstNode
-
-    until count == index
-      count += 1
-      currentNode = currentNode.nextNode
-    end
-
-    currentNode.element = element
-
-  end
-
 end
 
-myLinkedList = LinkedList.new
-p "size is currently " + myLinkedList.size.to_s
-p myLinkedList.remove_first
-myLinkedList.insert_first("Uber")
-myLinkedList.insert_first("Skrr")
-p myLinkedList.get(0)
-p myLinkedList.get(1)
-p myLinkedList.get(2)
-p "size is currently " + myLinkedList.size.to_s
-p myLinkedList.set(1, "hawoe")
-p myLinkedList.get(1)
-p myLinkedList.insert(1, "Yoooo")
-p myLinkedList.get(1)
-p myLinkedList.get(2)
+# myLinkedList = LinkedList.new
+# p "size is currently " + myLinkedList.size.to_s
+# p myLinkedList.remove_first
+# myLinkedList.insert_first("Uber")
+# myLinkedList.insert_first("Skrr")
+# p myLinkedList.get(0)
+# p myLinkedList.get(1)
+# p myLinkedList.get(2)
+# p "size is currently " + myLinkedList.size.to_s

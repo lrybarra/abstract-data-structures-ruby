@@ -22,7 +22,6 @@ class LinkedList
     return node if node == nil
 
     if node.nextNode == nil
-      p "first node now nil"
       @firstNode = nil
     else
       @firstNode = @firstNode.nextNode
@@ -65,8 +64,6 @@ class LinkedList
   end
 
   def get(index)
-    raise 'OutOfBoundsException' if index > (self.size - 1)
-
     count = 0
     currentNode = @firstNode
 

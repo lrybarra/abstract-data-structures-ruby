@@ -17,13 +17,11 @@ class Stack
   end
 
   def pop
-    return nil if @mi_lista.size == 0
-    @mi_lista.remove_last.element
+    @mi_lista.size == 0 ? nil : @mi_lista.remove_last.element
   end
 
   def top
-    return nil if @mi_lista.size == 0
-    @mi_lista.get(@mi_lista.size - 1).element
+    @mi_lista.size == 0 ? nil : @mi_lista.get(@mi_lista.size - 1).element
   end
 
   def empty?

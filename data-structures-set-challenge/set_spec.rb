@@ -44,4 +44,178 @@ describe MySet do
     expect(my_set.contains?("Chicago")).to eq(false)
   end
 
+  it "union of two sets keeps unique elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.union(anotha_one)
+    expect(new_set.size).to eq(5)
+  end
+
+  it "union of two sets keeps unique elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.union(anotha_one)
+    expect(new_set.contains?("NYC")).to eq(true)
+    expect(new_set.contains?("Gainesville")).to eq(true)
+  end
+
+  it "intersection of two sets keeps duplicate elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.intersection(anotha_one)
+    expect(new_set.size).to eq(2)
+  end
+
+  it "intersection of two sets keeps duplicate elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.intersection(anotha_one)
+    expect(new_set.contains?("NYC")).to eq(false)
+    expect(new_set.contains?("Miami")).to eq(true)
+  end
+
+  it "difference of two sets keeps elements not in other set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.difference(anotha_one)
+    expect(new_set.size).to eq(1)
+  end
+
+  it "difference of two sets keeps elements not in other set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("NYC")
+    anotha_one.add("Las Vegas")
+    new_set = my_set.difference(anotha_one)
+    expect(new_set.contains?("Chicago")).to eq(false)
+    expect(new_set.contains?("Gainesville")).to eq(true)
+  end
+
+  it "subset returns true if other set is subset of original set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    expect(my_set.subset?(anotha_one)).to eq(true)
+  end
+
+  it "subset returns false if other set is not subset of original set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    anotha_one.add("Chicago")
+    anotha_one.add("Miami")
+    anotha_one.add("Las Vegas")
+    expect(my_set.subset?(anotha_one)).to eq(false)
+  end
+
+  # empty set tizzests
+
+  it "union of two sets keeps unique elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.union(anotha_one)
+    expect(new_set.size).to eq(3)
+  end
+
+  it "union of two sets keeps unique elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.union(anotha_one)
+    expect(new_set.contains?("Gainesville")).to eq(true)
+  end
+
+  it "intersection of two sets keeps duplicate elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.intersection(anotha_one)
+    expect(new_set.size).to eq(0)
+  end
+
+  it "intersection of two sets keeps duplicate elements only" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.intersection(anotha_one)
+    expect(new_set.contains?("Miami")).to eq(false)
+  end
+
+  it "difference of two sets keeps elements not in other set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.difference(anotha_one)
+    expect(new_set.size).to eq(3)
+  end
+
+  it "difference of two sets keeps elements not in other set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    new_set = my_set.difference(anotha_one)
+    expect(new_set.contains?("Chicago")).to eq(true)
+  end
+
+  it "subset returns true if other set is subset of original set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    expect(my_set.subset?(anotha_one)).to eq(false)
+  end
+
+  it "subset returns false if other set is not subset of original set" do
+    my_set.add("Chicago")
+    my_set.add("Miami")
+    my_set.add("Gainesville")
+    anotha_one = MySet.new
+    expect(my_set.subset?(anotha_one)).to eq(false)
+  end
+
 end
